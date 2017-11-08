@@ -1,0 +1,42 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <TextView
+        android:id="@+id/tv_main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/civ_item"
+        android:hint="title"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_itemSong_dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/tv_main_title"
+        android:text="-"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_main_singer"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/tv_itemSong_dash"
+        android:hint="singer"
+        android:textSize="20dp" />
+</RelativeLayout>
+
+</android.support.v7.widget.CardView>
