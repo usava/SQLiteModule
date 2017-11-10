@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 
 /**
@@ -26,8 +25,6 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordViewHolder> {
         this.persons = persons;
     }
 
-
-
     @Override
     public RecordViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_person, parent, false);
@@ -38,6 +35,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordViewHolder> {
     public void onBindViewHolder(RecordViewHolder holder, int position) {
         Person person = persons.get(position);
         holder.bindPerson(person);
+
         if(mListener != null){
             mListener.onItemClicked(persons.get(position));
         }

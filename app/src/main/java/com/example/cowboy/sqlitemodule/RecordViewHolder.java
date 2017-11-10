@@ -14,10 +14,13 @@ import android.widget.TextView;
  * Created by Svyatoslav on 21.06.2017.
  */
 
-public class RecordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class RecordViewHolder extends RecyclerView.ViewHolder{
 
     private TextView mName;
     private TextView mSurname;
+    private TextView mPhone;
+    private TextView mEmail;
+    private TextView mSkype;
 
     private Context context;
     public Person person;
@@ -25,17 +28,13 @@ public class RecordViewHolder extends RecyclerView.ViewHolder implements View.On
     public RecordViewHolder(Context context, View itemView) {
         super(itemView);
 
-        this.mName = (TextView) itemView.findViewById(R.id.tv_main_title);
-        this.mSurname = (TextView) itemView.findViewById(R.id.tv_main_singer);
-        itemView.setOnClickListener(this);
+        this.mName = (TextView) itemView.findViewById(R.id.tv_main_name);
+        this.mSurname = (TextView) itemView.findViewById(R.id.tv_main_surname);
+        this.mPhone = (TextView) itemView.findViewById(R.id.tv_main_phone);
+        this.mEmail = (TextView) itemView.findViewById(R.id.tv_main_email);
+        this.mSkype = (TextView) itemView.findViewById(R.id.tv_main_skype);
+
         this.context = context;
-
-    }
-
-    public void onClick(View v){
-
-        final String name = mName.getText().toString();
-        final String surname = mSurname.getText().toString();
     }
 
     public void bindPerson(Person person){
@@ -43,6 +42,9 @@ public class RecordViewHolder extends RecyclerView.ViewHolder implements View.On
         if(person != null){
             mName.setText(person.getName());
             mSurname.setText(person.getSurname());
+            mPhone.setText(person.getPhone());
+            mEmail.setText(person.getEmail());
+            mSkype.setText(person.getSkype());
         }
     }
 }

@@ -10,8 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements ItemClickListener {
+public class MainActivity extends AppCompatActivity {
 
     EditText etName = null;
     EditText etSurname = null;
@@ -37,24 +38,21 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ContentValues cv = new ContentValues();
-                cv.put(PersonContract.KEY_NAME, etName.getText().toString());
-                cv.put(PersonContract.KEY_SURNAME, etSurname.getText().toString());
-                cv.put(PersonContract.KEY_PHONE, etPhone.getText().toString());
-                cv.put(PersonContract.KEY_MAIL, etEmail.getText().toString());
-                cv.put(PersonContract.KEY_SKYPE, etSkype.getText().toString());
+            ContentValues cv = new ContentValues();
+            cv.put(PersonContract.KEY_NAME, etName.getText().toString());
+            cv.put(PersonContract.KEY_SURNAME, etSurname.getText().toString());
+            cv.put(PersonContract.KEY_PHONE, etPhone.getText().toString());
+            cv.put(PersonContract.KEY_MAIL, etEmail.getText().toString());
+            cv.put(PersonContract.KEY_SKYPE, etSkype.getText().toString());
 
-                getContentResolver().insert(DBContentProvider.PERSONS_CONTENT_URI, cv);
+            getContentResolver().insert(DBContentProvider.PERSONS_CONTENT_URI, cv);
 
-                Intent intent = new Intent(MainActivity.this, RecordActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, RecordActivity.class);
+            startActivity(intent);
             }
         });
 
     }
 
-    @Override
-    public void onItemClicked(Object item) {
-        //make toast
-    }
+
 }

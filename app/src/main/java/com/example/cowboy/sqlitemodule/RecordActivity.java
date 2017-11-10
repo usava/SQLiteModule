@@ -12,11 +12,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 
-public class RecordActivity extends AppCompatActivity {
+public class RecordActivity extends AppCompatActivity implements ItemClickListener<Person> {
     ArrayList<Person> persons = new ArrayList<Person>();
     RecyclerView rv;
     @Override
@@ -26,10 +27,7 @@ public class RecordActivity extends AppCompatActivity {
 
         Cursor cursor = getContentResolver().query(DBContentProvider.PERSONS_CONTENT_URI, null, null, null, null);
 
-
         if(cursor.moveToFirst()){
-
-
             while (cursor.moveToNext()){
                 Person person = new Person();
                 person.setName(cursor.getString(cursor.getColumnIndex(PersonContract.KEY_NAME)));
@@ -39,10 +37,8 @@ public class RecordActivity extends AppCompatActivity {
                 person.setSkype(cursor.getString(cursor.getColumnIndex(PersonContract.KEY_SKYPE)));
                 persons.add(person);
             }
-
         }
 
-        RecordAdapter ra = new RecordAdapter(this, persons);
         rv = (RecyclerView) findViewById(R.id.rv_main);
 
         rv.setHasFixedSize(true);
@@ -51,7 +47,13 @@ public class RecordActivity extends AppCompatActivity {
         rv.setLayoutManager(llm);
         RecordAdapter adapter = new RecordAdapter(this, persons);
         rv.setAdapter(adapter);
+        adapter.setData(this);
+    }
 
+    @Override
+    public void onItemClicked(Person person) {
+        //make toast
+        Toast.makeText(this, person.toString(), Toast.LENGTH_SHORT).show();
     }
 
 
